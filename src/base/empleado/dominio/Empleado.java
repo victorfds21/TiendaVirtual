@@ -39,7 +39,7 @@ public class Empleado {
         this.apellido = apellido;
     }
 
-    public String getpassword() {
+    public String getPassword() {
         return password;
     }
 

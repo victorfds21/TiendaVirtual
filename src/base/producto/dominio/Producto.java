@@ -6,13 +6,13 @@ public class Producto {
     private int codigo;
     private String nombre;
     private String descripcion;
-    private double contraseña;
+    private double precio;
 
-    public Producto(int codigo, String nombre, String descripcion, double contraseña) {
+    public Producto(int codigo, String nombre, String descripcion, double precio) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.contraseña = contraseña;
+        this.precio = precio;
     }
 
     public int getCodigo() {
@@ -39,12 +39,12 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public double getContraseña() {
-        return contraseña;
+    public double getPrecio() {
+        return precio;
     }
 
-    public void setContraseña(double contraseña) {
-        this.contraseña = contraseña;
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
     
     

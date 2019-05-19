@@ -1,18 +1,18 @@
 [empleado]
- [codigo]
- 111
- [nombre]
- Mario
- [apellidos]
- Blue
- [contraseña]
- 1234
+[codigo]
+111
+[nombre]
+Mario
+[apellidos]
+Blue
+[contraseña]
+1234
 [empleado]
- [codigo]
- 112
- [nombre]
- Sara
- [apellidos]
- Brown
- [contraseña]
- 33678
+[codigo]
+112
+[nombre]
+Sara
+[apellidos]
+Brown
+[contraseña]
+33678
