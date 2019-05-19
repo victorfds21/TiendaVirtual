@@ -2,15 +2,18 @@
 package base.tienda.control;
 
 import base.empleado.control.EmpleadoControlador;
+import base.producto.control.ControladorProducto;
 import java.util.Scanner;
 
 
 public class ControladorTienda {
     
     private EmpleadoControlador empleadoContorlador;
+    private ControladorProducto productoControlador;
 
     public ControladorTienda() {
         this.empleadoContorlador = new EmpleadoControlador();
+        this.productoControlador = new ControladorProducto();
     }
     
     
@@ -37,7 +40,7 @@ public class ControladorTienda {
         case 1: System.out.println("opcion 1");
         break;
         case 2: System.out.println("opcion 2");
-        
+        productoControlador.modificarProducto();
         break;
         case 3: System.out.println("opcion 3");
         empleadoContorlador.modificarContraseña();
