@@ -6,13 +6,13 @@ public class Empleado {
     private int codigo;
     private String nombre;
     private String apellido;
-    private String contraseña;
+    private String password;
 
-    public Empleado(int codigo, String nombre, String apellido, String contraseña) {
+    public Empleado(int codigo, String nombre, String apellido, String password) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.contraseña = contraseña;
+        this.password = password;
     }
 
     public int getCodigo() {
@@ -39,12 +39,12 @@ public class Empleado {
         this.apellido = apellido;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getpassword() {
+        return password;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setPassword(String password) {
+        this.password = password;
     }
     
     

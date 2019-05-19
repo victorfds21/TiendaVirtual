@@ -9,5 +9,7 @@ public interface ProductoDAO {
     
     List<Producto> leerProductos();
     
+     Producto getProductoPorCodigo(int codigo);
+    
     boolean actualizarProducto(List<Producto>productos);
 }

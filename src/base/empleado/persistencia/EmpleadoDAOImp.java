@@ -42,9 +42,9 @@ public class EmpleadoDAOImp implements EmpleadoDAO {
                 //contraseña
                 archivo.readLine();
                 lineaConDatos = archivo.readLine().trim();
-                String contraseña = lineaConDatos;
+                String password = lineaConDatos;
 
-                empleados.add(new Empleado(codigo, nombre, apellido, contraseña));
+                empleados.add(new Empleado(codigo, nombre, apellido, password));
 
             }
         } catch (ParseException e) {
@@ -56,6 +56,18 @@ public class EmpleadoDAOImp implements EmpleadoDAO {
 
         return empleados;
 
+    }
+    
+     @Override
+    public Empleado getEmpleadoPorCodigo(int codigo) {
+        List<Empleado>empleados = leerEmpleado();
+        for (Empleado empleado : empleados) {
+            if (codigo == empleado.getCodigo()){
+                return empleado;
+            }
+
+        }
+        return null;
     }
 
     @Override

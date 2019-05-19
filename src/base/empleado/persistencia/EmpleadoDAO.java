@@ -9,5 +9,7 @@ public interface EmpleadoDAO {
     
     List<Empleado> leerEmpleado();
     
+    Empleado getEmpleadoPorCodigo(int codigo);
+    
     boolean actualizarEmpleados(List<Empleado> empleados);
 }
