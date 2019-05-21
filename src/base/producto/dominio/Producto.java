@@ -1,8 +1,7 @@
-
 package base.producto.dominio;
 
-
 public class Producto {
+
     private int codigo;
     private String nombre;
     private String descripcion;
@@ -49,9 +48,7 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "codigo=" + codigo + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio ;
+        return "codigo=" + codigo + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio;
     }
-    
-    
-    
+
 }

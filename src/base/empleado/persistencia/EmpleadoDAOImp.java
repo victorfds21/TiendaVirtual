@@ -76,7 +76,7 @@ public class EmpleadoDAOImp implements EmpleadoDAO {
 
     @Override
     public boolean actualizarEmpleados(List<Empleado> empleados) {
-    
+
         String nombreArchivo = "empleados.txt";
         Path rutaArchivo = Paths.get(nombreArchivo);
 
@@ -101,6 +101,5 @@ public class EmpleadoDAOImp implements EmpleadoDAO {
         }
 
     }
-    
 
 }

@@ -70,15 +70,15 @@ public class ProductoDAOImp implements ProductoDAO {
         List<Producto> productos = leerProductos();
         for (Producto producto : productos) {
             if (codigo == producto.getCodigo()) {
-
                 return producto;
             }
         }
         return null;
     }
-     public boolean actualizarProducto() {
-         return actualizarProducto(productos);
-     }
+
+    public boolean actualizarProducto() {
+        return actualizarProducto(productos);
+    }
 
     @Override
     public boolean actualizarProducto(List<Producto> productos) {

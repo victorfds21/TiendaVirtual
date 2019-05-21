@@ -1,0 +1,20 @@
+Factura simplificada: 
+-------------------------------------------
+codigo: 222
+nombre: Gigabyte B450M DS3H
+descripcion: Placa base GIGABYTE serie 400 con tecnología AMD StoreMI
+precio: 65.0
+
+codigo: 223
+nombre: Kingston A400 SSD 240GB
+descripcion: Disco duro A400 de estado sólido de Kingston
+precio: 33.0
+
+codigo: 224
+nombre: Lenovo
+descripcion: Ordenador portátil con Intel Core i5, 8GB RAM, 256GB SSD
+precio: 600.0
+
+-------------------------------------------
+El precio total es: 698.0
+Atendido por: Mario

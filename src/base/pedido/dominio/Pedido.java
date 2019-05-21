@@ -6,14 +6,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pedido {
-    private List<Producto> productos ;
+
+    private List<Producto> productos;
     private double precioTotal;
-    private  String nombreEmpleado;
+    private String nombreEmpleado;
 
     public Pedido(String nombreEmpleado) {
         this.productos = new ArrayList<>();
         this.precioTotal = 0;
         this.nombreEmpleado = nombreEmpleado;
+    }
+
+    public void agregarProducto(Producto producto) {
+        productos.add(producto);
+        precioTotal = precioTotal + producto.getPrecio();
     }
 
     public List<Producto> getProductos() {

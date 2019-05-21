@@ -23,9 +23,10 @@ public class EmpleadoControlador {
 
                 System.out.println("Ingrese contraseña");
                 String password = scan.next();
+                System.out.println("");
 
                 if (empleado.getPassword().equals(password)) {
-                    System.out.println("Bienvenido " + empleado.getNombre());
+                    System.out.println(empleado.getNombre() + " inició session\n");
                     this.empleado = empleado;
                 } else {
                     System.out.println("Contaseña incorrecta");
@@ -51,4 +52,9 @@ public class EmpleadoControlador {
         empleado.setPassword(contraseña);
         empleadoDAOImp.actualizarEmpleados();
     }
+
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
 }

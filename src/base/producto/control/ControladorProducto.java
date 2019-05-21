@@ -20,7 +20,8 @@ public class ControladorProducto {
         
         boolean datosCorrectos = false;
         do {
-            System.out.println("Que producto desea modificar?");
+            System.out.println("");
+            System.out.println("¿Que producto desea modificar?");
             int codigo = scan.nextInt();
             Producto producto = productoDAOImp.getProductoPorCodigo(codigo);
             if (producto != null) {
@@ -33,9 +34,9 @@ public class ControladorProducto {
     }
     
     private boolean modificarAtributo(Producto producto) {
-        System.out.println("Modificar nombre");
-        System.out.println("Modificar descripcion");
-        System.out.println("Modificar codigo");
+        System.out.println("1.\tModificar nombre");
+        System.out.println("2.\tModificar descripcion");
+        System.out.println("3.\tModificar codigo");
         
         Scanner scan = new Scanner(System.in);
         
@@ -49,12 +50,12 @@ public class ControladorProducto {
                 producto.setNombre(nombre);
                 break;
             case 2:
-                System.out.println("Ingrese el nuevo nombre");
+                System.out.println("Ingrese el nuevo precio");
                 double precio = scan.nextDouble();
                 producto.setPrecio(precio);
                 break;
             case 3:
-                System.out.println("Ingrese el nuevo nombre");
+                System.out.println("Ingrese el nuevo codigo");
                 int codigo = scan.nextInt();
                 producto.setCodigo(codigo);
                 break;
@@ -62,4 +63,6 @@ public class ControladorProducto {
         
         return productoDAOImp.actualizarProducto();
     }
+    
+ 
 }
