@@ -40,7 +40,7 @@ public class ControladorTienda {
 
         switch (opcion) {
             case 1:
-                
+
                 System.out.println("\tHacer pedido\n");
                 controladorPedido.generarPedido(empleadoContorlador.getEmpleado());
                 break;

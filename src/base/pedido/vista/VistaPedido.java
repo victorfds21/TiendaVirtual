@@ -2,7 +2,6 @@ package base.pedido.vista;
 
 public class VistaPedido {
 
-
     public static void menuPedido() {
 
         System.out.println("1. Añadir producto a la cesta");
