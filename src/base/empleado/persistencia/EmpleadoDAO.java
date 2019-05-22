@@ -9,5 +9,5 @@ public interface EmpleadoDAO {
 
     Empleado getEmpleadoPorCodigo(int codigo);
 
-    boolean actualizarEmpleados(List<Empleado> empleados);
+    boolean actualizarEmpleados(int codigo, String password);
 }

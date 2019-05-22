@@ -3,18 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/victo/Documents/NetBeansProjects/UF5_TiendaVirtual/src/base/producto/persistencia/ProductoDAO.java</file>
-            <file>file:/C:/Users/victo/Documents/NetBeansProjects/UF5_TiendaVirtual/src/base/producto/persistencia/ProductoDAOImp.java</file>
             <file>file:/C:/Users/victo/Documents/NetBeansProjects/UF5_TiendaVirtual/src/base/pedido/persistencia/PedidoDAOImp.java</file>
-            <file>file:/C:/Users/victo/Documents/NetBeansProjects/UF5_TiendaVirtual/src/base/empleado/persistencia/EmpleadoDAOImp.java</file>
-            <file>file:/C:/Users/victo/Documents/NetBeansProjects/UF5_TiendaVirtual/src/base/pedido/vista/VistaPedido.java</file>
-            <file>file:/C:/Users/victo/Documents/NetBeansProjects/UF5_TiendaVirtual/src/base/producto/dominio/Producto.java</file>
             <file>file:/C:/Users/victo/Documents/NetBeansProjects/UF5_TiendaVirtual/src/base/producto/control/ControladorProducto.java</file>
+            <file>file:/C:/Users/victo/Documents/NetBeansProjects/UF5_TiendaVirtual/src/base/producto/dominio/Producto.java</file>
+            <file>file:/C:/Users/victo/Documents/NetBeansProjects/UF5_TiendaVirtual/src/base/conexion/ConexionBD.java</file>
+            <file>file:/C:/Users/victo/Documents/NetBeansProjects/UF5_TiendaVirtual/src/base/pedido/vista/VistaPedido.java</file>
+            <file>file:/C:/Users/victo/Documents/NetBeansProjects/UF5_TiendaVirtual/src/base/producto/persistencia/ProductoDAO.java</file>
+            <file>file:/C:/Users/victo/Documents/NetBeansProjects/UF5_TiendaVirtual/src/base/empleado/persistencia/EmpleadoDAOImp.java</file>
+            <file>file:/C:/Users/victo/Documents/NetBeansProjects/UF5_TiendaVirtual/src/base/producto/persistencia/ProductoDAOImp.java</file>
+            <file>file:/C:/Users/victo/Documents/NetBeansProjects/UF5_TiendaVirtual/src/base/tienda/control/ControladorTienda.java</file>
             <file>file:/C:/Users/victo/Documents/NetBeansProjects/UF5_TiendaVirtual/src/base/pedido/dominio/Pedido.java</file>
+            <file>file:/C:/Users/victo/Documents/NetBeansProjects/UF5_TiendaVirtual/src/base/empleado/control/EmpleadoControlador.java</file>
+            <file>file:/C:/Users/victo/Documents/NetBeansProjects/UF5_TiendaVirtual/src/base/empleado/persistencia/EmpleadoDAO.java</file>
             <file>file:/C:/Users/victo/Documents/NetBeansProjects/UF5_TiendaVirtual/src/base/Main.java</file>
             <file>file:/C:/Users/victo/Documents/NetBeansProjects/UF5_TiendaVirtual/src/base/pedido/control/ControladorPedido.java</file>
-            <file>file:/C:/Users/victo/Documents/NetBeansProjects/UF5_TiendaVirtual/src/base/tienda/control/ControladorTienda.java</file>
-            <file>file:/C:/Users/victo/Documents/NetBeansProjects/UF5_TiendaVirtual/src/base/empleado/control/EmpleadoControlador.java</file>
         </group>
     </open-files>
 </project-private>

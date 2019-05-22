@@ -1,18 +1,13 @@
 package base.producto.persistencia;
 
+import base.conexion.ConexionBD;
 import base.producto.dominio.Producto;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.text.NumberFormat;
-import java.text.ParseException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Formatter;
 import java.util.List;
-import java.util.Locale;
 
 public class ProductoDAOImp implements ProductoDAO {
 
@@ -25,84 +20,82 @@ public class ProductoDAOImp implements ProductoDAO {
     @Override
     public List<Producto> leerProductos() {
         List<Producto> productos = new ArrayList<>();
-        NumberFormat formatoNumero = NumberFormat.getInstance(Locale.FRANCE);
-        Number numero;
-        String lineaConDatos;
-        String archivosProductos = "productos.txt";
-        System.out.println();
-        try ( BufferedReader archivo = Files.newBufferedReader(Paths.get(archivosProductos))) {
-            while (archivo.readLine() != null) {
-                //codigo
-                archivo.readLine();
-                lineaConDatos = archivo.readLine().trim();
-                numero = formatoNumero.parse(lineaConDatos);
-                int codigo = numero.intValue();
-                //nombre
-                archivo.readLine();
-                lineaConDatos = archivo.readLine().trim();
-                String nombre = lineaConDatos;
-                //descrip
-                archivo.readLine();
-                lineaConDatos = archivo.readLine().trim();
-                String descripcion = lineaConDatos;
-                //precio
-                archivo.readLine();
-                lineaConDatos = archivo.readLine().trim();
-                numero = formatoNumero.parse(lineaConDatos);
-                double precio = numero.doubleValue();
+        try {
+            Connection conexion = ConexionBD.conectar();
+            Statement sentencia = conexion.createStatement();
+            ResultSet resultado = sentencia.executeQuery("SELECT * FROM productos");
+
+            // capturar resultados
+            while (resultado.next()) {
+                var codigo = resultado.getInt("p_codigo");
+                var nombre = resultado.getString("p_nombre");
+                var descripcion = resultado.getString("p_descripcion");
+                var precio = resultado.getDouble("p_precio");
 
                 productos.add(new Producto(codigo, nombre, descripcion, precio));
-
             }
-        } catch (ParseException e) {
-            System.out.println("Error de formato de numero");
 
-        } catch (IOException e) {
-            System.out.println("Error de formato de Archivo");
+            // cerrar conexion
+            resultado.close();
+            sentencia.close();
+            conexion.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error al leer los productos en la base de datos");
+            System.exit(1);
         }
-        this.productos = productos;
+
         return productos;
 
     }
 
     @Override
     public Producto getProductoPorCodigo(int codigo) {
-        List<Producto> productos = leerProductos();
-        for (Producto producto : productos) {
-            if (codigo == producto.getCodigo()) {
-                return producto;
-            }
+        Producto producto = null;
+        String query = "SELECT * FROM productos WHERE p_codigo = " + codigo;
+        try {
+            Connection conexion = ConexionBD.conectar();
+            Statement sentencia = conexion.createStatement();
+            ResultSet resultado = sentencia.executeQuery(query);
+            resultado.next();
+            var code = resultado.getInt("p_codigo");
+            var nombre = resultado.getString("p_nombre");
+            var descripcion = resultado.getString("p_descripcion");
+            var precio = resultado.getDouble("p_precio");
+            producto = new Producto(code, nombre, descripcion, precio);
+            resultado.close();
+            sentencia.close();
+            conexion.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
-        return null;
-    }
-
-    public boolean actualizarProducto() {
-        return actualizarProducto(productos);
+        return producto;
     }
 
     @Override
-    public boolean actualizarProducto(List<Producto> productos) {
+    public boolean actualizarNombre(int codigo, String nombre) {
+        String query = "UPDATE  productos SET p_nombre = " + nombre + " WHERE  p_codigo= " + codigo;
+        try ( Connection conexion = ConexionBD.conectar();  Statement sentencia = conexion.createStatement()) {
+            return sentencia.executeUpdate(query) == 1;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
 
-        String nombreArchivo = "productos.txt";
-        Path rutaArchivo = Paths.get(nombreArchivo);
+    public boolean actualizarPrecio(int codigo, double precio) {
+        String query = "UPDATE  productos SET p_precio = " + precio + " WHERE  p_codigo= " + codigo;
+        try ( Connection conexion = ConexionBD.conectar();  Statement sentencia = conexion.createStatement()) {
+            return sentencia.executeUpdate(query) == 1;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
 
-        try {
-            BufferedWriter writer = Files.newBufferedWriter(rutaArchivo);
-            Formatter salida = new Formatter(writer);
-
-            for (Producto producto : productos) {
-                salida.format("%s%n%s%n%d%n%s%n%s%n%s%n%s%n%s%n%.2f%n",
-                        "[producto]", "[codigo]", producto.getCodigo(),
-                        "[nombre]", producto.getNombre(), "[descripcion]", producto.getDescripcion(),
-                        "[precio]", producto.getPrecio());
-
-            }
-
-            salida.close();
-            writer.close();
-
-            return true;
-        } catch (IOException e) {
+    public boolean actualizarCodigo(int codigo, int nuevoCodigo) {
+        String query = "UPDATE  productos SET p_codigo = " + nuevoCodigo + " WHERE  p_codigo= " + codigo;
+        try ( Connection conexion = ConexionBD.conectar();  Statement sentencia = conexion.createStatement()) {
+            return sentencia.executeUpdate(query) == 1;
+        } catch (SQLException e) {
             return false;
         }
     }

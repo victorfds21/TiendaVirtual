@@ -50,7 +50,7 @@ public class EmpleadoControlador {
         System.out.println("Ingrese la nueva contraseña");
         contraseña = scan.next();
         empleado.setPassword(contraseña);
-        empleadoDAOImp.actualizarEmpleados();
+        empleadoDAOImp.actualizarEmpleados(empleado.getCodigo(), contraseña);
     }
 
     public Empleado getEmpleado() {

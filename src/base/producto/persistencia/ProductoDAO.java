@@ -9,5 +9,9 @@ public interface ProductoDAO {
 
     Producto getProductoPorCodigo(int codigo);
 
-    boolean actualizarProducto(List<Producto> productos);
+    boolean actualizarNombre(int codigo, String nombre);
+
+    boolean actualizarPrecio(int codigo, double precio);
+
+    boolean actualizarCodigo(int codigo, int nuevoCodigo);
 }

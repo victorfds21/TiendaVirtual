@@ -48,20 +48,22 @@ public class ControladorProducto {
                 System.out.println("Ingrese el nuevo nombre");
                 String nombre = scan.next();
                 producto.setNombre(nombre);
-                break;
+                return productoDAOImp.actualizarNombre(producto.getCodigo(), nombre);
+
             case 2:
                 System.out.println("Ingrese el nuevo precio");
                 double precio = scan.nextDouble();
                 producto.setPrecio(precio);
-                break;
+                return productoDAOImp.actualizarPrecio(producto.getCodigo(), precio);
+
             case 3:
                 System.out.println("Ingrese el nuevo codigo");
                 int codigo = scan.nextInt();
                 producto.setCodigo(codigo);
-                break;
-        }
+                return productoDAOImp.actualizarCodigo(producto.getCodigo(), codigo);
 
-        return productoDAOImp.actualizarProducto();
+        }
+        return false;
     }
 
 }
