@@ -2,6 +2,8 @@ package base.empleado.control;
 
 import base.empleado.dominio.Empleado;
 import base.empleado.persistencia.EmpleadoDAOImp;
+import base.exepciones.CodigoError_Enum;
+import base.exepciones.NombreArchivoIncorrectoExeption;
 import java.util.Scanner;
 
 public class EmpleadoControlador {
@@ -16,10 +18,10 @@ public class EmpleadoControlador {
     public void login() {
         Scanner scan = new Scanner(System.in);
         while (this.empleado == null) {
-            System.out.println("Ingrese codigo");
-            int codigo = scan.nextInt();
-            Empleado empleado = empleadoDAOImp.getEmpleadoPorCodigo(codigo);
-            if (empleado != null) {
+            try {
+                System.out.println("Ingrese codigo");
+                int codigo = scan.nextInt();
+                Empleado empleado = empleadoDAOImp.getEmpleadoPorCodigo(codigo);
 
                 System.out.println("Ingrese contraseña");
                 String password = scan.next();
@@ -29,10 +31,10 @@ public class EmpleadoControlador {
                     System.out.println(empleado.getNombre() + " inició session\n");
                     this.empleado = empleado;
                 } else {
-                    System.out.println("Contaseña incorrecta");
+                    throw new NombreArchivoIncorrectoExeption(CodigoError_Enum.ERROR_PASSWORD_ERRADO);
                 }
-            } else {
-                System.out.println("Codigo incorrecto");
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
 
         }

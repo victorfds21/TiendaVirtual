@@ -1,6 +1,8 @@
 package base.empleado.persistencia;
 
 import base.empleado.dominio.Empleado;
+import base.exepciones.CodigoError_Enum;
+import base.exepciones.NombreArchivoIncorrectoExeption;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -62,12 +64,14 @@ public class EmpleadoDAOImp implements EmpleadoDAO {
     public Empleado getEmpleadoPorCodigo(int codigo) {
         List<Empleado> empleados = leerEmpleado();
         for (Empleado empleado : empleados) {
+
             if (codigo == empleado.getCodigo()) {
                 return empleado;
             }
 
         }
-        return null;
+        throw new NombreArchivoIncorrectoExeption(CodigoError_Enum.ERROR_USUARIO_NO_ENCONTRADO);
+
     }
 
     public boolean actualizarEmpleados() {

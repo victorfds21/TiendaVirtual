@@ -1,8 +1,7 @@
-
 package base.empleado.dominio;
 
-
 public class Empleado {
+
     private int codigo;
     private String nombre;
     private String apellido;
@@ -46,6 +45,5 @@ public class Empleado {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    
+
 }
