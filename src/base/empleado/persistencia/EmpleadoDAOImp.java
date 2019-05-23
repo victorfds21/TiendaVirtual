@@ -2,6 +2,8 @@ package base.empleado.persistencia;
 
 import base.conexion.ConexionBD;
 import base.empleado.dominio.Empleado;
+import base.excepciones.CodigoError_Enum;
+import base.excepciones.NombreArchivoIncorrectoExeption;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -49,25 +51,31 @@ public class EmpleadoDAOImp implements EmpleadoDAO {
 
     @Override
     public Empleado getEmpleadoPorCodigo(int codigo) {
-        Empleado empleado = null;
-        String query = "SELECT * FROM empleados WHERE e_codigo = " + codigo;
+               Connection conexion = null;
+        Statement sentencia = null;
+        ResultSet resultado = null;
         try {
-            Connection conexion = ConexionBD.conectar();
-            Statement sentencia = conexion.createStatement();
-            ResultSet resultado = sentencia.executeQuery(query);
-            resultado.next();
-            var code = resultado.getInt("e_codigo");
-            var nombre = resultado.getString("e_nombre");
-            var apellidos = resultado.getString("e_apellidos");
-            var contraseña = resultado.getString("e_password");
-            empleado = new Empleado(code, nombre, apellidos, contraseña);
+            conexion = ConexionBD.conectar();
+            sentencia = conexion.createStatement();
+            resultado = sentencia.executeQuery("SELECT * FROM empleados WHERE e_codigo = "+codigo);
+
+                resultado.next();
+                int codig = resultado.getInt("e_codigo");
+                String nombre = resultado.getString("e_nombre");
+                String apellido = resultado.getString("e_apellidos");
+                String password = resultado.getString("e_password");
+
+
             resultado.close();
             sentencia.close();
             conexion.close();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+               
+               return new Empleado(codigo,nombre,apellido,password);
+        } catch (Exception e) {
+            System.out.println("Error al leer los empleados....");
+            System.out.println(e.getMessage());
         }
-        return empleado;
+        throw new NombreArchivoIncorrectoExeption(CodigoError_Enum.ERROR_USUARIO_NO_ENCONTRADO);
     }
 
     @Override

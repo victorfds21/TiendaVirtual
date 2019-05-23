@@ -2,6 +2,9 @@ package base.empleado.control;
 
 import base.empleado.dominio.Empleado;
 import base.empleado.persistencia.EmpleadoDAOImp;
+import base.excepciones.CodigoError_Enum;
+import base.excepciones.NombreArchivoIncorrectoExeption;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class EmpleadoControlador {
@@ -14,27 +17,40 @@ public class EmpleadoControlador {
     }
 
     public void login() {
-        Scanner scan = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
+
         while (this.empleado == null) {
-            System.out.println("Ingrese codigo");
-            int codigo = scan.nextInt();
-            Empleado empleado = empleadoDAOImp.getEmpleadoPorCodigo(codigo);
-            if (empleado != null) {
+            try {
+                System.out.println("Ingrese su codigo:");
+                int codigo = sc.nextInt();
 
-                System.out.println("Ingrese contraseña");
-                String password = scan.next();
-                System.out.println("");
+                Empleado empleado = empleadoDAOImp.getEmpleadoPorCodigo(codigo);
+                if (empleado != null) {
+                    System.out.println("Ingrese su Contraseña:");
+                    String pass = sc.next();
 
-                if (empleado.getPassword().equals(password)) {
-                    System.out.println(empleado.getNombre() + " inició session\n");
-                    this.empleado = empleado;
+                    controlarPassword(empleado, pass);
+
                 } else {
-                    System.out.println("Contaseña incorrecta");
+                    System.out.println("Codigo incorrecto" );
                 }
-            } else {
-                System.out.println("Codigo incorrecto");
+            } catch (InputMismatchException e) {
+                System.out.println("Solo se adminten numeros");
+                sc.next();
+            } catch (NombreArchivoIncorrectoExeption e) {
+                System.out.println(e.getMessage());
             }
 
+        }
+    }
+
+    public void controlarPassword(Empleado empleado, String pass)throws NombreArchivoIncorrectoExeption {
+        if (empleado.getPassword().equals(pass)) {
+            System.out.println("");
+            System.out.println(empleado.getNombre() + " inició session\n");
+            this.empleado = empleado;
+        } else {
+            throw new NombreArchivoIncorrectoExeption(CodigoError_Enum.ERROR_PASSWORD_ERRADO);
         }
 
     }
